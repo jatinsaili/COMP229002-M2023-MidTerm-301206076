@@ -83,7 +83,19 @@ module.exports.processAddPage = async (req, res, next) => {
  */
 module.exports.displayEditPage = async (req, res, next) => {
   // Gets a car by ID and renders the Edit form
-  
+  console.log("displayEditPage");
+  let id = req.params.id;
+  try {
+    let carToEdit = await CarModel.findById(id);
+    res.render("cars/add_edit", {
+      title: "Edit Car Details",
+      car: carToEdit,
+      userName: req.user ? req.user.username : "",
+    });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
 /**
