@@ -65,8 +65,18 @@ module.exports.displayAddPage = (req, res, next) => {
  */
 module.exports.processAddPage = async (req, res, next) => {
   // Add a new car to the database
-  
+  console.log("processAddPage");
+  const car = new CarModel(req.body);
+  console.log("car", car);
+  try {
+    await CarModel.create(car);
+    res.redirect("/cars/list");
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
+
 
 /**
  * Gets a car by ID and renders the Edit form using the add_edit.ejs template.
