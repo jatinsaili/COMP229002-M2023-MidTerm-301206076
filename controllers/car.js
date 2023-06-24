@@ -51,9 +51,15 @@ module.exports.details = async (req, res, next) => {
  */
 module.exports.displayAddPage = (req, res, next) => {
   // Render the add form
-  
+  console.log("displayAddPage");
+  const car = new CarModel();
+  console.log("car", car);
+  res.render("cars/add_edit", {
+    title: "Add a new Car",
+    car: car,
+    userName: req.user ? req.user.username : "",
+  });
 };
-
 /**
  * Processes the data submitted from the Add form to create a new car.
  */
