@@ -52,11 +52,11 @@ module.exports.details = async (req, res, next) => {
 module.exports.displayAddPage = (req, res, next) => {
   // Render the add form
   console.log("displayAddPage");
-  const car = new CarModel();
-  console.log("car", car);
+  // const car = new CarModel();
+  // console.log("car", car);
   res.render("cars/add_edit", {
     title: "Add a new Car",
-    car: car,
+    car: null,
     userName: req.user ? req.user.username : "",
   });
 };
@@ -76,7 +76,6 @@ module.exports.processAddPage = async (req, res, next) => {
     next(error);
   }
 };
-
 
 /**
  * Gets a car by ID and renders the Edit form using the add_edit.ejs template.
@@ -130,4 +129,4 @@ module.exports.performDelete = async (req, res, next) => {
     console.log(error);
     next(error);
   }
-}
+};

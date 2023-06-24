@@ -9,10 +9,10 @@
       <form
         class="form"
         method="POST"
-        action="/cars/<%= car._id ? 'edit/' + car._id : 'add' %>"
+        action="/cars/<%= car ? '/edit/' + car?._id : '/add' %>"
       >
         <div class="form-group">
-          <input type="hidden" name="id" value="<%= car._id %>" />
+          <input type="hidden" name="id" value="<%= car?._id %>" />
           <label for="carTextField">Make</label>
           <input
             type="text"
@@ -20,7 +20,7 @@
             id="makeTextField"
             placeholder="Enter the Car Make"
             name="make"
-            value="<%= car.make %>"
+            value="<%= car?.make %>"
             required
           />
         </div>
@@ -32,7 +32,7 @@
             id="modelTextField"
             placeholder="Enter a model"
             name="model"
-            value="<%= car.model %>"
+            value="<%= car?.model %>"
           />
         </div>
         <br />
@@ -45,7 +45,7 @@
             id="YearTextField"
             placeholder="2022"
             name="year"
-            value="<%= car.year %>"
+            value="<%= car?.year %>"
             required
           />
         </div>
@@ -57,7 +57,7 @@
             id="kilometersTextField"
             placeholder="20"
             name="kilometers"
-            value="<%= car.kilometers %>"
+            value="<%= car?.kilometers %>"
             required
           />
         </div>
@@ -70,7 +70,7 @@
             id="doorsTextField"
             placeholder="4"
             name="doors"
-            value="<%= car.doors %>"
+            value="<%= car?.doors %>"
             required
           />
         </div>
@@ -83,7 +83,7 @@
             id="seatsTextField"
             placeholder="5"
             name="seats"
-            value="<%= car.seats %>"
+            value="<%= car?.seats %>"
             required
           />
         </div>
@@ -96,7 +96,7 @@
             id="colorTextField"
             placeholder="Enter the color"
             name="color"
-            value="<%= car.color %>"
+            value="<%= car?.color %>"
           />
         </div>
 
@@ -109,7 +109,7 @@
             id="priceTextField"
             placeholder="9,999.99"
             name="price"
-            value="<%= car.price %>"
+            value="<%= car?.price %>"
             required
           />
         </div>
