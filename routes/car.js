@@ -14,7 +14,17 @@ var router = express.Router();
 let carController = require("../controllers/car");
 
 // Helper function for guard purposes
-function requireAuth(req, res, next) {}
+function requireAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    // User is authenticated, proceed to the next method
+    next();
+  } else {
+    // User is not authenticated
+    //get the current page url
+    req.session.url = req.originalUrl;
+    res.redirect("/users/signin");
+  }
+}
 
 /* GET list of items */
 router.get("/list", carController.carList);
