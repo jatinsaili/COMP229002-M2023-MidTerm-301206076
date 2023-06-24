@@ -121,5 +121,13 @@ module.exports.processEditPage = async (req, res, next) => {
  */
 module.exports.performDelete = async (req, res, next) => {
   // Deletes a car based on its ID
-  
-};
+  console.log("performDelete");
+  let id = req.params.id;
+  try {
+    await CarModel.deleteOne({ _id: id });
+    res.redirect("/cars/list");
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
