@@ -103,7 +103,17 @@ module.exports.displayEditPage = async (req, res, next) => {
  */
 module.exports.processEditPage = async (req, res, next) => {
   // Processes the data submitted from the Edit form to update a car
-  
+  console.log("processEditPage");
+  let id = req.params.id;
+  try {
+    let carToEdit = await CarModel.findById(id);
+    carToEdit.set(req.body);
+    await carToEdit.save();
+    res.redirect("/cars/list");
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
 /**
